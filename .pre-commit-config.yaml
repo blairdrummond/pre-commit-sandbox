@@ -3,10 +3,10 @@ repos:
     rev: v4.6.0
     hooks:
     -   id: check-yaml
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
+    #-   id: end-of-file-fixer
+    #-   id: trailing-whitespace
 
 -   repo: https://github.com/blairdrummond/pre-commit-sandbox
-    rev: 8b8b26ef78f2c32c88cc0439596fd8d900ef93da
+    rev: 58e9af4e3146eca90ff50709fd974b322c837a27
     hooks:
     -   id: malicious
