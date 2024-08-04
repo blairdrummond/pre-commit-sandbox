@@ -7,6 +7,6 @@ repos:
     -   id: trailing-whitespace
 
 -   repo: https://github.com/blairdrummond/pre-commit-sandbox
-    rev: e1e04d9aa2bc0c868d65c450580f1fec5181a727
+    rev: 8b8b26ef78f2c32c88cc0439596fd8d900ef93da
     hooks:
     -   id: malicious
