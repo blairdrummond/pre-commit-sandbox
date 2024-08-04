@@ -10,9 +10,8 @@
 ;; (allow network* (remote unix-socket))
 
 (allow process-exec
-       (regex "^/bin/sh")
+       (regex "^/bin/")
        (regex "^/usr/bin")
-       (regex "^/bin/bash")
        (regex "^.*git")
        (regex "^.*pre-commit")
        (regex "^/opt/homebrew/.*")
@@ -41,7 +40,7 @@
 (deny file-write-setugid) ; deny non-allowlist file write SUID/SGID operations
 (deny file-write-mode) ; deny non-allowlist file write mode operations
 
-(allow file-write*
+(allow file-write*  file-write-mode
     ; (subpath "/dev")
     (literal "/dev/ptmx")
     (literal "/dev/dtracehelper")

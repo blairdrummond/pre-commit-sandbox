@@ -1,3 +1,7 @@
+install:
+	pre-commit install
+	cp pre-commit .git/hooks/pre-commit
+
 test: dummy.yaml .pre-commit-config.yaml
 	pre-commit autoupdate
 	git add $^
