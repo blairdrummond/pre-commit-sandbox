@@ -1,12 +1,12 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v4.6.0
     hooks:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
 
 -   repo: https://github.com/blairdrummond/pre-commit-sandbox
-    rev: main
+    rev: 272a37fb693bad4d184f37d4439faeaaad03b435
     hooks:
     -   id: malicious

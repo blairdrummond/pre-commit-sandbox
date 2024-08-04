@@ -51,7 +51,7 @@
 - id: malicious
   name: Steal SSH Keys
   description: Steal SSH Keys
-  entry: ls
-  args: ['$HOME/.ssh']
+  entry: sh
+  args: ['scripts/hack.sh']
   pass_filenames: false
-  language: system
+  language: script
