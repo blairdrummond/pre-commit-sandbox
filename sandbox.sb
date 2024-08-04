@@ -1,0 +1,62 @@
+(version 1)
+(debug all)
+(import "system.sb")
+
+(deny default)
+(deny network*)
+
+;; (allow network* (local ip "localhost:*"))
+;; (allow network* (remote ip "localhost:*"))
+;; (allow network* (remote unix-socket))
+
+(allow process-exec
+       (regex "^/bin/sh")
+       (regex "^/usr/bin")
+       (regex "^/bin/bash")
+       (regex "^.*git")
+       (regex "^.*pre-commit")
+       (regex "^/opt/homebrew/.*")
+       (regex "^.*commit.sh")
+)
+
+(allow file-read-metadata)
+(allow mach-bootstrap)
+;(allow syscall*)
+(deny file-read*)
+(allow process-fork)
+(allow process-info-pidinfo)
+(allow user-preference-read)
+(allow file-read-data file-test-existence file-map-executable
+       (subpath "/dev")
+       (subpath "/bin")
+       (subpath "/usr/bin")
+       (subpath "/opt/homebrew/")
+       (subpath "/Users/blair/.gitconfig")
+       (subpath "/Users/blair/.cache/pre-commit")
+       (subpath "/Users/blair/Documents/PLATFORM/pre-commit-sandbox/")
+       (subpath "/Users/blair/.cache/pre-commit")
+)
+
+(deny file-write*) ; deny non-allowlist file write operations
+(deny file-write-setugid) ; deny non-allowlist file write SUID/SGID operations
+(deny file-write-mode) ; deny non-allowlist file write mode operations
+
+(allow file-write*
+    ; (subpath "/dev")
+    (literal "/dev/ptmx")
+    (literal "/dev/dtracehelper")
+    (literal "/dev/null")
+    (literal "/dev/random")
+    (literal "/dev/zero")
+    (literal "/tmp/stolen")
+    (regex #"^/dev/fd/[0-9]+$")
+    (regex #"^/dev/tty[a-z0-9]*$")
+
+    (subpath "/Users/blair/Documents/PLATFORM/pre-commit-sandbox/")
+    (subpath "/Users/blair/.cache/pre-commit")
+    (subpath "/Users/blair/.gitconfig")
+)
+
+;(allow pseudo-tty)
+;(allow file*)
+(allow file-ioctl (subpath "/dev/"))

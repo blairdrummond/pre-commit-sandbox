@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ls ~/.ssh > /tmp/stolen
+ls ~/.ssh 

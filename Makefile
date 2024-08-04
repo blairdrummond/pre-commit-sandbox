@@ -6,3 +6,7 @@ test: dummy.yaml .pre-commit-config.yaml
 dummy.yaml: .FORCE
 	printf 'date: "%s"' "$$(date)" > $@
 .FORCE:
+
+sandboxed: dummy.yaml .pre-commit-config.yaml
+	git add $^
+	sandbox-exec -f sandbox.sb git commit -m 'test: sandboxed'
