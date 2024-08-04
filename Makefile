@@ -4,5 +4,5 @@ test: dummy.yaml .pre-commit-config.yaml
 	git commit -m 'test'
 
 dummy.yaml: .FORCE
-	printf 'date: "%s"' $$(date) > $@
+	printf 'date: "%s"' "$$(date)" > $@
 .FORCE:
