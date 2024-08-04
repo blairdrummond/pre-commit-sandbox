@@ -11,7 +11,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 ARGS+=(--hook-dir "$HERE" -- "$@")
 
 if [ -x "$INSTALL_PYTHON" ]; then
-    exec "$INSTALL_PYTHON" -mpre_commit "${ARGS[@]}"
+    sandbox-exec -f sandbox.sb "$INSTALL_PYTHON" -mpre_commit "${ARGS[@]}"
 elif command -v pre-commit > /dev/null; then
     sandbox-exec -f sandbox.sb pre-commit "${ARGS[@]}"
 else
