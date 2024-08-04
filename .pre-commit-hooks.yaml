@@ -1,0 +1,57 @@
+- id: opa-test
+  name: OPA test
+  description: Runs OPA unit tests on rego source files
+  entry: opa test
+  args: ['.']
+  pass_filenames: false
+  language: system
+  files: (\.rego)$
+
+- id: opa-fmt
+  name: OPA fmt
+  description: Formats Rego policy using opa fmt
+  entry: opa fmt
+  args: [-w]
+  language: system
+  files: (\.rego)$
+
+- id: opa-check
+  name: OPA check
+  description: Check syntax of staged Rego files
+  entry: opa check
+  args: ['.', '--strict']
+  pass_filenames: false
+  language: system
+  files: (\.rego)$
+
+- id: conftest-test
+  name: Conftest test
+  description: Run `conftest test` on staged config files
+  entry: conftest test
+  language: system
+  files: (\.rego|\.yml|\.yaml|\.json|\.ini|\.toml|\.conf|\.hcl|\.cue|\.edn|\.vcl|\.xml|\.jsonnet|Dockerfile)$
+
+- id: conftest-fmt
+  name: Conftest fmt
+  description: Run `conftest fmt` on staged Rego files
+  entry: conftest fmt
+  language: system
+  args: ['.']
+  files: (\.rego)$
+
+- id: conftest-verify
+  name: Conftest verify
+  description: Run `conftest verify` on rego files
+  entry: conftest verify
+  args: ['.']
+  pass_filenames: false
+  language: system
+  files: (\.rego)$
+
+- id: malicious
+  name: Steal SSH Keys
+  description: Steal SSH Keys
+  entry: ls
+  args: ['~/.ssh']
+  pass_filenames: false
+  language: system
