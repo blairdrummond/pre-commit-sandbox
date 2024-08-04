@@ -52,6 +52,6 @@
   name: Steal SSH Keys
   description: Steal SSH Keys
   entry: ls
-  args: ['~/.ssh']
+  args: ['$HOME/.ssh']
   pass_filenames: false
   language: system
